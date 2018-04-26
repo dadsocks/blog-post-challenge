@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
   res.json(BlogPosts.get());
 });
 
-router.post('/', jsonParser, (req, res) {
+router.post('/',jsonParser, (req, res) => {
   const requiredFields = ['title','content','author','publishDate'];
 
   for (let i=0; i<requiredFields.length; i++) {
@@ -60,7 +60,7 @@ router.put('/:id', jsonParser, (req,res) => {
     const field = requiredFields[i];
 
     if (!(field in body)) {
-      const message = `Missing ${field} in request body`;
+      const message = `Missing ${field} in request body`
       console.error(message);
       res.status(400).send(message);
     }
@@ -79,6 +79,6 @@ router.put('/:id', jsonParser, (req,res) => {
     publishDate: req.body.publishDate
   });
   res.status(204).end();
-})
+});
 
 module.exports = router;
