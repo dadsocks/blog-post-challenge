@@ -35,7 +35,8 @@ describe('Blog Post', function() {
     const newPost = {
       title: 'Blog Post Title',
       content: 'Some crazy inspiring content to generate ad revenue',
-      author: 'Someone W This'
+      author: 'Someone W This',
+      publishDate: 'August 12'
     };
 
     return chai.request(app)
@@ -47,7 +48,7 @@ describe('Blog Post', function() {
         expect(res.body).to.be.a('object');
         expect(res.body).to.include.keys('id','title','content','author','publishDate');
         expect(res.body.id).to.not.equal(null);
-        expect(res.body).to.deep.equal(Object.assign(newItem, {id: res.body.id}));
+        expect(res.body).to.deep.equal(Object.assign(newPost, {id: res.body.id}));
       });
   });
 
@@ -56,7 +57,8 @@ describe('Blog Post', function() {
     const updatePost = {
       title: 'Blog Post Title New',
       content: 'Some crazy inspiring content to generate ad revenue New',
-      author: 'Someone Wrote This'
+      author: 'Someone Wrote This',
+      publishDate: 'August 3'
     };
 
     return chai.request(app)
@@ -66,7 +68,7 @@ describe('Blog Post', function() {
         return chai.request(app)
           .put(`/blog-posts/${updatePost.id}`)
           .send(updatePost);
-    })
+      })
     .then(function(res) {
       expect(res).to.have.status(204);
       expect(res).to.be.json;
