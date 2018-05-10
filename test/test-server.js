@@ -1,9 +1,9 @@
 const chai = require('chai');
-const chaiHTTP = require('chai-http');
+const chaiHttp = require('chai-http');
 const {app, runServer, closeServer} = require('../server');
 const expect = chai.expect;
 
-chai.use(chaiHTTP);
+chai.use(chaiHttp);
 
 describe('Blog Post', function() {
 
@@ -35,8 +35,7 @@ describe('Blog Post', function() {
     const newPost = {
       title: 'Blog Post Title',
       content: 'Some crazy inspiring content to generate ad revenue',
-      author: 'Someone W This',
-      publishDate:
+      author: 'Someone W This'
     };
 
     return chai.request(app)
@@ -57,8 +56,7 @@ describe('Blog Post', function() {
     const updatePost = {
       title: 'Blog Post Title New',
       content: 'Some crazy inspiring content to generate ad revenue New',
-      author: 'Someone Wrote This',
-      publishDate:
+      author: 'Someone Wrote This'
     };
 
     return chai.request(app)
