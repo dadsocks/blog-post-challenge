@@ -69,12 +69,9 @@ describe('Blog Post', function() {
           .put(`/blog-posts/${updatePost.id}`)
           .send(updatePost);
       })
-    .then(function(res) {
-      expect(res).to.have.status(204);
-      expect(res).to.be.json;
-      expect(res.body).to.be.a('object');
-      expect(res.body).to.deep.equal(updatePost);
-    });
+      .then(function(res) {
+        expect(res).to.have.status(204);
+      });
   });
 
   it('Should delete blog-posts on DELETE', function() {

@@ -59,7 +59,7 @@ router.put('/:id', jsonParser, (req,res) => {
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
 
-    if (!(field in body)) {
+    if (!(field in req.body)) {
       const message = `Missing ${field} in request body`
       console.error(message);
       res.status(400).send(message);
